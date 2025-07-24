@@ -1,6 +1,6 @@
 
 Next.js
-Tailwind CSS, and shadcn/ui components Radix-ui
+Tailwind CSS, and shadcn/ui components Radix-ui , EmailJs
 
 deployed in Vercel
 
