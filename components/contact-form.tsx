@@ -49,32 +49,74 @@ export function ContactForm() {
     return null
   }
 
+  const getCurrentDateTime = () => {
+    const now = new Date()
+    const date = now.toLocaleDateString("en-US", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+    const time = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      timeZoneName: "short",
+    })
+    return { date, time }
+  }
+
   const sendEmailWithEmailJS = async () => {
     // EmailJS configuration
     const serviceId = "service_gfyfi2m" // Replace with your EmailJS service ID
-    const templateId = "template_ir8um8y" // Replace with your EmailJS template ID
+    const mainTemplateId = "template_ir8um8y" // Replace with your EmailJS template ID
+    const autoReplyTemplateId = "template_oos5dt6" // Replace with your EmailJS template ID
     const publicKey = "SS7Zyev0cTkgCGfpV" // Replace with your EmailJS public key
 
-    const templateParams = {
+    const { date, time } = getCurrentDateTime()
+
+    const mainTemplateParams = {
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
       message: formData.message,
       to_name: "Akila", // Your name
       reply_to: formData.email,
+      current_date: date,
+      current_time: time
+    }
+
+    // Template parameters for the auto-reply (to the visitor)
+    const autoReplyTemplateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      to_email: formData.email, // Send auto-reply to visitor's email
+      current_date: date,
+      current_time: time
     }
 
     try {
       // Import EmailJS dynamically to avoid SSR issues
       const emailjs = await import("@emailjs/browser")
 
-      const response = await emailjs.send(serviceId, templateId, templateParams, publicKey)
+      console.log("Sending main email...")
+      const mainResponse = await emailjs.send(serviceId, mainTemplateId, mainTemplateParams, publicKey)
 
-      if (response.status === 200) {
-        return { success: true }
-      } else {
-        throw new Error("Failed to send email")
+      if (mainResponse.status !== 200) {
+        throw new Error("Failed to send main email")
       }
+
+      // Send auto-reply to visitor
+      console.log("Sending auto-reply email...")
+      const autoReplyResponse = await emailjs.send(serviceId, autoReplyTemplateId, autoReplyTemplateParams, publicKey)
+
+      if (autoReplyResponse.status !== 200) {
+        console.warn("Auto-reply failed, but main email was sent successfully")
+        // Don't throw error here - main email was successful
+      }
+
+      return { success: true }
     } catch (error) {
       console.error("EmailJS Error:", error)
       throw error
@@ -96,6 +138,7 @@ export function ContactForm() {
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
+          _replyto: formData.email, // Formspree auto-reply feature
         }),
       })
 
@@ -106,32 +149,6 @@ export function ContactForm() {
       }
     } catch (error) {
       console.error("Formspree Error:", error)
-      throw error
-    }
-  }
-
-  const sendEmailWithNetlify = async () => {
-    // For Netlify Forms (if deployed on Netlify)
-    try {
-      const response = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          "form-name": "contact",
-          name: formData.name,
-          email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-        }).toString(),
-      })
-
-      if (response.ok) {
-        return { success: true }
-      } else {
-        throw new Error("Failed to send email via Netlify")
-      }
-    } catch (error) {
-      console.error("Netlify Error:", error)
       throw error
     }
   }
@@ -158,8 +175,9 @@ export function ContactForm() {
       try {
         await sendEmailWithEmailJS()
         emailSent = true
+        console.log("✅ Both main email and auto-reply sent successfully via EmailJS")
       } catch (error) {
-        console.log("EmailJS failed, trying Formspree...")
+        console.log("❌ EmailJS failed, trying Formspree...")
         lastError = error
       }
 
@@ -168,18 +186,9 @@ export function ContactForm() {
         try {
           await sendEmailWithFormspree()
           emailSent = true
+          console.log("✅ Email sent successfully via Formspree")
         } catch (error) {
-          console.log("Formspree failed, trying Netlify...")
-          lastError = error
-        }
-      }
-
-      // Method 3: Try Netlify Forms as last resort (only works on Netlify)
-      if (!emailSent) {
-        try {
-          await sendEmailWithNetlify()
-          emailSent = true
-        } catch (error) {
+          console.log("❌ Formspree failed...")
           lastError = error
         }
       }
@@ -187,7 +196,7 @@ export function ContactForm() {
       if (emailSent) {
         setStatus("success")
         setStatusMessage(
-          "Thank you for your message! I've received it and will get back to you within 24 hours. Check your email for a confirmation.",
+          "🎉 Thank you for your message! I've received it and you should receive a confirmation email shortly. I'll get back to you within 24 hours.",
         )
 
         // Clear form
@@ -201,22 +210,22 @@ export function ContactForm() {
         throw lastError
       }
 
-      // Reset status after 8 seconds
+      // Reset status after 10 seconds
       setTimeout(() => {
         setStatus("idle")
         setStatusMessage("")
-      }, 8000)
+      }, 10000)
     } catch (error) {
       setStatus("error")
       setStatusMessage(
-        "Failed to send message. Please try again or contact me directly at akilapiumal16@gmail.com. You can also reach out via LinkedIn or GitHub.",
+        "❌ Failed to send message. Please try again or contact me directly at akilaiumal16@gmail.com. You can also reach out via LinkedIn or GitHub.",
       )
 
-      // Reset status after 8 seconds
+      // Reset status after 10 seconds
       setTimeout(() => {
         setStatus("idle")
         setStatusMessage("")
-      }, 8000)
+      }, 10000)
     }
   }
 
@@ -227,16 +236,10 @@ export function ContactForm() {
     <div className="space-y-6 rounded-2xl border p-8">
       <div className="space-y-2">
         <h3 className="text-2xl font-bold">Contact Form</h3>
-        <p className="text-sm text-muted-foreground">Fill out the form below and I'll respond as soon as possible.</p>
+        <p className="text-sm text-muted-foreground">
+          Fill out the form below and I'll respond as soon as possible. You'll receive a confirmation email immediately.
+        </p>
       </div>
-
-      {/* Netlify Forms hidden form for form detection */}
-      <form name="contact" netlify="true" hidden>
-        <input type="text" name="name" />
-        <input type="email" name="email" />
-        <input type="text" name="subject" />
-        <textarea name="message"></textarea>
-      </form>
 
       <form onSubmit={handleSubmit} className="space-y-4" name="contact">
         <div className="grid gap-4 sm:grid-cols-2">
@@ -319,7 +322,7 @@ export function ContactForm() {
           {isLoading ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Sending Message...
+              Sending Message & Confirmation....
             </>
           ) : (
             <>
@@ -344,9 +347,11 @@ export function ContactForm() {
 
         {/* Email Service Status */}
         <div className="mt-4 p-3 bg-muted/50 rounded-lg">
-          <p className="text-xs text-muted-foreground text-center">
-            🔒 This form uses secure email services (EmailJS, Formspree, or Netlify) to deliver your message directly to
-            my inbox.
+        <p className="text-xs text-muted-foreground text-center">
+            📧 You'll receive an instant confirmation email after submitting this form
+          </p>
+          <p className="text-xs text-muted-foreground text-center mt-1">
+            🔒 This form uses secure email services to deliver messages directly to my inbox
           </p>
         </div>
       </div>
