@@ -131,7 +131,7 @@ export default function Home() {
               <div className="relative rounded-2xl overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                  alt="About Nuha"
+                  alt="About Akila"
                   className="object-cover w-full h-full rounded-2xl"
                   width={600}
                   height={400}
@@ -204,7 +204,7 @@ export default function Home() {
                   </p>
                   <div className="flex items-center gap-3 p-4 rounded-xl border">
                     <Mail className="h-6 w-6 text-[#e05d4f]" />
-                    <span>nuha@example.com</span>
+                    <span>akilapiumal16@gmail.com</span>
                   </div>
                 </div>
               </div>
@@ -240,62 +240,164 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="bg-background py-12 border-t">
-        <div className="container">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <div>
-              <div className="font-bold text-xl">Nuha</div>
-              <p className="mt-2 text-sm text-muted-foreground">© {new Date().getFullYear()} All rights reserved.</p>
-            </div>
-            <div className="flex gap-8">
+      <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23ffffff' fillOpacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+            }}
+          />
+        </div>
+
+        {/* Main Footer Content */}
+        <div className="relative z-10 container py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-12">
+            {/* Brand Section */}
+            <div className="lg:col-span-2 space-y-6">
               <div>
-                <h3 className="font-medium mb-2">Links</h3>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li>
-                    <a href="#home" className="hover:text-[#e05d4f]">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#projects" className="hover:text-[#e05d4f]">
-                      Projects
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#skills" className="hover:text-[#e05d4f]">
-                      Skills
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#about" className="hover:text-[#e05d4f]">
-                      About
-                    </a>
-                  </li>
-                </ul>
+                <div className="font-bold text-3xl mb-2 bg-gradient-to-r from-[#e05d4f] to-[#ff7a6b] bg-clip-text text-transparent">
+                  Nuha
+                </div>
+                <p className="text-gray-300 text-lg leading-relaxed max-w-md">
+                  Associate Software Engineer passionate about creating beautiful, functional web experiences that make
+                  a difference.
+                </p>
               </div>
-              <div>
-                <h3 className="font-medium mb-2">Social</h3>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li>
-                    <a href="https://github.com/Akila-Piumal" className="hover:text-[#e05d4f]">
-                      GitHub
+
+              {/* Social Media Links */}
+              <div className="flex gap-4">
+                <a
+                  href="https://www.linkedin.com/in/akila-piumal-3b7040229/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative p-3 bg-white/10 rounded-full hover:bg-[#e05d4f] transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#e05d4f]/25"
+                >
+                  <svg
+                    className="h-5 w-5 text-white group-hover:text-white transition-colors"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://github.com/Akila-Piumal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative p-3 bg-white/10 rounded-full hover:bg-[#e05d4f] transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#e05d4f]/25"
+                >
+                  <svg
+                    className="h-5 w-5 text-white group-hover:text-white transition-colors"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                  </svg>
+                </a>
+                <a
+                  href="https://wa.me/783223485"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative p-3 bg-white/10 rounded-full hover:bg-[#e05d4f] transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#e05d4f]/25"
+                >
+                  <MessageCircle className="h-5 w-5 text-white group-hover:text-white transition-colors" />
+                </a>
+                <a
+                  href="mailto:akilapiumal16@gmail.com"
+                  className="group relative p-3 bg-white/10 rounded-full hover:bg-[#e05d4f] transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#e05d4f]/25"
+                >
+                  <Mail className="h-5 w-5 text-white group-hover:text-white transition-colors" />
+                </a>
+              </div>
+            </div>
+
+            {/* Quick Links */}
+            <div className="space-y-6">
+              <h3 className="font-semibold text-xl text-white relative">
+                Quick Links
+                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-[#e05d4f] to-transparent"></div>
+              </h3>
+              <ul className="space-y-3">
+                {[
+                  { href: "#home", label: "Home" },
+                  { href: "#about", label: "About" },
+                  { href: "#skills", label: "Skills" },
+                  { href: "#projects", label: "Projects" },
+                  { href: "#contact", label: "Contact" },
+                ].map((link) => (
+                  <li key={link.href}>
+                    <a
+                      href={link.href}
+                      className="text-gray-300 hover:text-[#e05d4f] transition-colors duration-300 flex items-center gap-2 group"
+                    >
+                      <div className="w-1 h-1 bg-gray-500 rounded-full group-hover:bg-[#e05d4f] transition-colors duration-300"></div>
+                      {link.label}
                     </a>
                   </li>
-                  <li>
-                    <a href="https://www.linkedin.com/in/akila-piumal-3b7040229/" className="hover:text-[#e05d4f]">
-                      LinkedIn
-                    </a>
+                ))}
+              </ul>
+            </div>
+
+            {/* Services */}
+            <div className="space-y-6">
+              <h3 className="font-semibold text-xl text-white relative">
+                Services
+                <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-[#e05d4f] to-transparent"></div>
+              </h3>
+              <ul className="space-y-3">
+                {["Web Development", "Mobile Apps", "UI/UX Design", "API Development", "Cloud Services"].map((service) => (
+                  <li key={service}>
+                    <span className="text-gray-300 flex items-center gap-2 group cursor-pointer hover:text-[#e05d4f] transition-colors duration-300">
+                      <div className="w-1 h-1 bg-gray-500 rounded-full group-hover:bg-[#e05d4f] transition-colors duration-300"></div>
+                      {service}
+                    </span>
                   </li>
-                  {/* <li>
-                    <a href="https://youtube.com" className="hover:text-[#e05d4f]">
-                      YouTube
-                    </a>
-                  </li> */}
-                </ul>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Newsletter Section */}
+          <div className="border-t border-gray-700 pt-8 mb-8">
+            <div className="max-w-md mx-auto text-center">
+              <h3 className="font-semibold text-xl text-white mb-2">Stay Updated</h3>
+              <p className="text-gray-300 mb-4">Get notified about my latest projects and blog posts.</p>
+              <div className="flex gap-2">
+                <Input
+                  placeholder="Enter your email"
+                  className="bg-white/10 border-gray-600 text-white placeholder:text-gray-400 focus:border-[#e05d4f]"
+                />
+                <Button className="bg-[#e05d4f] hover:bg-[#c04a3e] text-white px-6">Subscribe</Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Section */}
+          <div className="border-t border-gray-700 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+              <div className="text-gray-400 text-sm">
+                © {new Date().getFullYear()} Akila. All rights reserved. Made with ❤️ in Sri Lanka.
+              </div>
+              <div className="flex gap-6 text-sm text-gray-400">
+                <a href="#" className="hover:text-[#e05d4f] transition-colors duration-300">
+                  Privacy Policy
+                </a>
+                <a href="#" className="hover:text-[#e05d4f] transition-colors duration-300">
+                  Terms of Service
+                </a>
+                <a href="#" className="hover:text-[#e05d4f] transition-colors duration-300">
+                  Sitemap
+                </a>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-[#e05d4f]/10 to-transparent rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr from-[#e05d4f]/5 to-transparent rounded-full blur-2xl"></div>
       </footer>
     </div>
   )

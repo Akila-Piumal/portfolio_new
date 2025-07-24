@@ -48,7 +48,7 @@ const workData: ExperienceItem[] = [
 ]
 
 export function ExperienceSection() {
-  const [activeTab, setActiveTab] = useState<"education" | "work">("education")
+  const [activeTab, setActiveTab] = useState<"education" | "work">("work")
 
   const currentData = activeTab === "education" ? educationData : workData
 
