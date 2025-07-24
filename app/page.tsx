@@ -1,8 +1,6 @@
 import { ModeToggle } from "@/components/mode-toggle"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Github, Mail, Send, ArrowRight, Linkedin, Youtube, MessageCircle } from "lucide-react"
+import { Github, Mail, ArrowRight, Linkedin, Youtube, MessageCircle } from "lucide-react"
 import { ProjectCarousel } from "@/components/project-carousel"
 import { SkillsSection } from "@/components/skills-section"
 import { ScrollDownButton } from "@/components/scroll-down-button"
@@ -13,6 +11,8 @@ import { ExperienceSection } from "@/components/experience-section"
 import Link from "next/link"
 import { ContactButton } from "@/components/ui/contactButton"
 import { AboutModal } from "@/components/about-modal"
+import { ContactForm } from "@/components/contact-form"
+import { Input } from "@/components/ui/input"
 
 export default function Home() {
   return (
@@ -208,34 +208,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <div className="space-y-6 rounded-2xl border p-8">
-                <div className="space-y-2">
-                  <h3 className="text-2xl font-bold">Contact Form</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Fill out the form below and I'll respond as soon as possible.
-                  </p>
-                </div>
-                <form className="space-y-4">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="space-y-2">
-                      <Input id="name" placeholder="Name" />
-                    </div>
-                    <div className="space-y-2">
-                      <Input id="email" type="email" placeholder="Email" />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <Input id="subject" placeholder="Subject" />
-                  </div>
-                  <div className="space-y-2">
-                    <Textarea id="message" placeholder="Your message" className="min-h-[120px]" />
-                  </div>
-                  <Button type="submit" className="w-full bg-[#e05d4f] hover:bg-[#c04a3e] text-white">
-                    <Send className="mr-2 h-4 w-4" />
-                    Send Message
-                  </Button>
-                </form>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </section>
@@ -258,7 +231,7 @@ export default function Home() {
             <div className="lg:col-span-2 space-y-6">
               <div>
                 <div className="font-bold text-3xl mb-2 bg-gradient-to-r from-[#e05d4f] to-[#ff7a6b] bg-clip-text text-transparent">
-                  Nuha
+                  Akila
                 </div>
                 <p className="text-gray-300 text-lg leading-relaxed max-w-md">
                   Associate Software Engineer passionate about creating beautiful, functional web experiences that make
