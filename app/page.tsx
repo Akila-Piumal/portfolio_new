@@ -11,6 +11,8 @@ import { Navigation } from "@/components/navigation"
 import { SectionHeader } from "@/components/section-header"
 import { ExperienceSection } from "@/components/experience-section"
 import Link from "next/link"
+import { ContactButton } from "@/components/ui/contactButton"
+import { AboutModal } from "@/components/about-modal"
 
 export default function Home() {
   return (
@@ -101,10 +103,7 @@ export default function Home() {
                     High-level experience in web and mobile design and development knowledge, producing quality work
                   </p>
                   <div>
-                    <Button className="bg-[#e05d4f] hover:bg-[#c04a3e] text-white rounded-md px-6 py-6 h-auto">
-                      Contact Me
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
+                    <ContactButton/>
                   </div>
                 </div>
 
@@ -158,15 +157,19 @@ export default function Home() {
                     creating accessible and performant user interfaces that provide great user experiences.
                   </p>
                   <p>
-                    When I'm not coding, you can find me exploring new hiking trails, reading science fiction novels, or
-                    experimenting with new recipes in the kitchen.
+                    Lately, I’ve been exploring the intersection of web development and AI, working on projects that integrate intelligent features into applications to improve usability and automation.
+                  </p>
+                  <p>
+                  When I’m not coding, I enjoy hiking new trails, staying updated on emerging tech trends, and contributing to open-source projects.
                   </p>
                 </div>
                 <div>
-                  <Button className="bg-[#e05d4f] hover:bg-[#c04a3e] text-white group">
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
+                  <AboutModal>
+                    <Button className="bg-[#e05d4f] hover:bg-[#c04a3e] text-white group">
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </AboutModal>
                 </div>
               </div>
             </div>

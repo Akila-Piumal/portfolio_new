@@ -14,34 +14,34 @@ type ExperienceItem = {
 const educationData: ExperienceItem[] = [
   {
     title: "Software Engineering",
-    institution: "Sri Lanka Institute of Information Technology (SLIIT)",
-    location: "Sri Lanka",
-    period: "2017 - 2021",
-    description: "Bachelor's degree in Software Engineering with focus on web development and software architecture.",
+    institution: "IJSE | Institute of Software Engineering",
+    location: "Panadura, Sri Lanka",
+    period: "2020 - 2023",
+    description: "Diploma in Software Engineering with focus on web development and software architecture.",
   },
   {
     title: "Higher Studies",
-    institution: "Nalanda College Colombo",
-    location: "Sri Lanka",
-    period: "2004 - 2017",
-    description: "Completed secondary education with excellent grades in Mathematics and Science subjects.",
+    institution: "C.W.W. Kannangara Central College",
+    location: "Mathugama, Sri Lanka",
+    period: "2015 - 2018",
+    description: "Completed Advanced Level education in Maths Stream.",
   },
 ]
 
 const workData: ExperienceItem[] = [
   {
     title: "Associate Software Engineer",
-    institution: "Tech Solutions Inc.",
+    institution: "Yoors",
     location: "Colombo, Sri Lanka",
-    period: "2021 - Present",
+    period: "2024 - Present",
     description:
-      "Developing web applications using React, Next.js, and Node.js. Working on both frontend and backend development.",
+      "Developing web and mobile applications using Angular, Ionic and React. Working on both frontend and backend development.",
   },
   {
     title: "Software Engineering Intern",
-    institution: "Digital Innovations Ltd.",
+    institution: "Yoors",
     location: "Colombo, Sri Lanka",
-    period: "2020 - 2021",
+    period: "2023 - 2024",
     description:
       "Gained hands-on experience in full-stack development and agile methodologies during university internship.",
   },
